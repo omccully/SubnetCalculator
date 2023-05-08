@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubnetMaskCalculatorComponent implements OnInit {
 
-  constructor() { }
+  public subnetMasks?: string[];
+
+  constructor() {
+    this.subnetMasks = Array<string>();
+
+    this.subnetMasks.push("255.0.0.0");
+    this.subnetMasks.push("255.255.0.0");
+    this.subnetMasks.push("255.255.255.0");
+   
+
+  }
 
   ngOnInit(): void {
   }
 
 }
+
+
