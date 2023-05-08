@@ -1,1 +1,15 @@
-<p>nav-menu works!</p>
+<header>
+  <mat-toolbar color="primary">
+    <button mat-icon-button [routerLink]="['/subnet-mask-calculator']">
+      <mat-icon>
+        home
+      </mat-icon>
+    </button>
+    <a mat-flat-button color="primary" [routerLink]="['/subnet-mask-calculator']">
+      Subnet Mask Calculator
+    </a>
+    <a mat-flat-button color="primary" [routerLink]="['/private-ip-address-calculator']">
+      Private IP Calculator
+    </a>
+  </mat-toolbar>
+</header>
