@@ -13,13 +13,15 @@ import { SubnetMaskCalculatorComponent } from './subnet-mask-calculator/subnet-m
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { PrivateIpAddressCalculatorComponent } from './private-ip-address-calculator/private-ip-address-calculator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubnetMaskComponent } from './subnet-mask/subnet-mask.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubnetMaskCalculatorComponent,
     NavMenuComponent,
-    PrivateIpAddressCalculatorComponent
+    PrivateIpAddressCalculatorComponent,
+    SubnetMaskComponent
   ],
   imports: [
     BrowserModule,
