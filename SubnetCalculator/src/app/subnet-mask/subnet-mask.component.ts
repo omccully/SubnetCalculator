@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { SubnetMask } from 'src/app/lib/subnet-mask';
 import { Subnet } from 'src/app/lib/subnet';
 
@@ -7,7 +7,7 @@ import { Subnet } from 'src/app/lib/subnet';
   templateUrl: './subnet-mask.component.html',
   styleUrls: ['./subnet-mask.component.scss']
 })
-export class SubnetMaskComponent implements OnInit {
+export class SubnetMaskComponent implements OnInit, OnChanges {
 
   @Input() subnetMask!: string;
 
@@ -24,6 +24,10 @@ export class SubnetMaskComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     var subnetMask = new SubnetMask(this.subnetMask);
 
     this.binary = subnetMask.dottedBinary;

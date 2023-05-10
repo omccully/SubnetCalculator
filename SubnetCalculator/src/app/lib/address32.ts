@@ -1,5 +1,5 @@
 
-export class Address32 {
+export abstract class Address32 {
   public readonly bytes: number[];
 
   constructor(dottedDecimal: string) {
@@ -31,5 +31,23 @@ export class Address32 {
 
   private byteToBinary(byte: number): string {
     return byte.toString(2).padStart(8, "0");
+  } 
+
+  private static parseBinaryBytes(binary: string): number[] {
+    var result: number[] = [];
+    for (var i = 0; i < binary.length; i += 8) {
+      var byte = parseInt(binary.substring(i, i + 8), 2);
+      result.push(byte);
+    }
+    return result;
+  }
+
+  public static binaryToDottedDecimal(binary: string): string {
+    var binaryNoDots = binary.replace(".", "");
+    if (binaryNoDots.length != 32) {
+      throw new Error("Binary should be 32 bits long");
+    }
+
+    return Address32.parseBinaryBytes(binary).join(".");
   }
 }

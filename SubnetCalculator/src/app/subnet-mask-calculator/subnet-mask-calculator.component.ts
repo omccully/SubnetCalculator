@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Address32 } from 'src/app/lib/address32';
 
 @Component({
   selector: 'app-subnet-mask-calculator',
@@ -14,16 +15,19 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   constructor() {
     this.subnetMasks = Array<string>();
 
-    this.subnetMasks.push("255.0.0.0");
-    this.subnetMasks.push("255.255.0.0");
-    this.subnetMasks.push("255.255.255.0");
-   
-
+    for (var i = 8; i < 31; i++) {
+      var binaryString = "1".repeat(i) + "0".repeat(32 - i);
+      var dottedDecimal = Address32.binaryToDottedDecimal(binaryString);
+      this.subnetMasks.push(dottedDecimal);
+    }
   }
 
   ngOnInit(): void {
   }
 
+  public onSelectSubnet(selectedSubnetMask: string) {
+    this.selectedSubnetMask = selectedSubnetMask;
+  }
 }
 
 

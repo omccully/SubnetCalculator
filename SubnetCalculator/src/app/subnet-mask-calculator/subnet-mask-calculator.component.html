@@ -1,12 +1,10 @@
 <mat-drawer-container>
   <mat-drawer mode="side" opened>
-    <ul *ngFor="let subnetMask of subnetMasks">
-      <li>{{subnetMask}}</li>
+    <ul >
+      <li *ngFor="let subnetMask of subnetMasks"><button (click)="onSelectSubnet(subnetMask)">{{subnetMask}}</button></li>
     </ul>
-    Drawer
   </mat-drawer>
   <mat-drawer-content>
-    Content
     <app-subnet-mask [subnetMask]="selectedSubnetMask">
 
     </app-subnet-mask>
