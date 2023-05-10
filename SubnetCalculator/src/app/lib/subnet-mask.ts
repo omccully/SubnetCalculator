@@ -64,24 +64,24 @@ export class SubnetMask extends Address32 {
       case 0:
         return "";
       case 8:
-        return "NNN.";
+        return "n.";
       case 16:
-        return "NNN.NNN.";
+        return "n.n.";
       case 24:
-        return "NNN.NNN.NNN.";
+        return "n.n.n.";
       default:
         throw new Error("Invalid");
     }
   }
 
-  public get hostSuffix(): string {
+  public get subnetSuffix(): string {
     switch (this.networkPrefixLength) {
       case 0:
-        return ".HHH.HHH.HHH";
+        return ".0.0.0";
       case 8:
-        return ".HHH.HHH";
+        return ".0.0";
       case 16:
-        return ".HHH";
+        return ".0";
       case 24:
         return "";
       default:
