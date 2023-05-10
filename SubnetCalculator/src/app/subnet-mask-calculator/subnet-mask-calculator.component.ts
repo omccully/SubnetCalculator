@@ -9,6 +9,8 @@ export class SubnetMaskCalculatorComponent implements OnInit {
 
   public subnetMasks?: string[];
 
+  public selectedSubnetMask = "255.255.0.0";
+
   constructor() {
     this.subnetMasks = Array<string>();
 

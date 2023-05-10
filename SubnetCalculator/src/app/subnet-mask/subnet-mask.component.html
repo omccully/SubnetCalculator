@@ -1,1 +1,21 @@
 <p>subnet-mask works!</p>
+<p>Subnet Mask: {{subnetMask}}</p>
+<p>Class: {{class}}</p>
+<p>Hosts per Subnet: {{hostsPerSubnet}}</p>
+<p>Number of subnets: {{numberOfSubnets}}</p>
+<table>
+  <thead>
+    <tr>
+      <td>Subnet binary</td>
+      <td>Subnet address</td>
+      <td>Valid host range</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subnet of subnets">
+      <td>{{ subnet.subnetBinary }}</td>
+      <td>{{ subnet.address }}</td>
+      <td>{{ subnet.minHostNum }}-{{ subnet.maxHostNum}}</td>
+    </tr>
+  </tbody>
+</table>
