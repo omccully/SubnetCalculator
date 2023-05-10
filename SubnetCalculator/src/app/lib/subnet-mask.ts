@@ -82,6 +82,8 @@ export class SubnetMask extends Address32 {
         return ".HHH.HHH";
       case 16:
         return ".HHH";
+      case 24:
+        return "";
       default:
         throw new Error("Invalid");
     }
