@@ -13,9 +13,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let subnet of subnets">
-      <td>{{ subnet.subnetBinary }}</td>
-      <td>{{ subnet.address }}</td>
-      <td>{{ subnet.minHostNum }}-{{ subnet.maxHostNum}}</td>
+      <td>{{ subnet.networkBits }}</td>
+      <td>{{ subnet }}</td>
+      <td>{{ subnet.firstHostSubAddress }}-{{ subnet.lastHostSubAddress}}</td>
     </tr>
   </tbody>
 </table>

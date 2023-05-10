@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SubnetMask } from 'src/app/lib/subnet-mask';
+import { Subnet } from 'src/app/lib/subnet';
 
 @Component({
   selector: 'app-subnet-mask',
@@ -17,18 +19,17 @@ export class SubnetMaskComponent implements OnInit {
 
   public numberOfSubnets?: number;
 
-  public subnets?: subnet[]
+  public subnets?: Subnet[]
 
   constructor() { }
 
   ngOnInit(): void {
-    
-  }
-}
+    var subnetMask = new SubnetMask(this.subnetMask);
 
-interface subnet {
-  subnetBinary: string;
-  address: string;
-  minHostNum: number;
-  maxHostNum: number;
+    this.binary = subnetMask.dottedBinary;
+    this.class = subnetMask.class;
+    this.hostsPerSubnet = subnetMask.hostsPerSubnets;
+    this.numberOfSubnets = subnetMask.subnetworksCount;
+    this.subnets = subnetMask.subnets;
+  }
 }
