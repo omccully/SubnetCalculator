@@ -28,6 +28,28 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   public onSelectSubnet(selectedSubnetMask: string) {
     this.selectedSubnetMask = selectedSubnetMask;
   }
+
+  public onMoveUp() {
+    this.tryMove(-1);
+  }
+
+  public onMoveDown() {
+    this.tryMove(1);
+  }
+
+  private tryMove(indexChange: number) {
+    if (!this.subnetMasks) return;
+    var selectedIndex = this.subnetMasks.indexOf(this.selectedSubnetMask);
+    var nextIndex = selectedIndex + indexChange;
+    this.tryMoveToIndex(nextIndex);
+  }
+
+  private tryMoveToIndex(index: number) {
+    if (!this.subnetMasks) return;
+    if (0 <= index && index < this.subnetMasks.length) {
+      this.selectedSubnetMask = this.subnetMasks[index];
+    }
+  }
 }
 
 
