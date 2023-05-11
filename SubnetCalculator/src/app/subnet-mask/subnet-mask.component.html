@@ -1,8 +1,9 @@
 <p>Subnet mask: {{subnetMask}}</p>
+<p>Binary: {{binary}}</p>
 <p>Class: {{class}}</p>
 <p>Hosts per subnet: {{hostsPerSubnet}}</p>
 <p>Number of subnets: {{numberOfSubnets}}</p>
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <td>Subnet binary</td>
@@ -14,7 +15,7 @@
     <tr *ngFor="let subnet of subnets">
       <td>{{ subnet.networkBits }}</td>
       <td>{{ subnet }}</td>
-      <td>{{ subnet.firstHostAddress }}-{{ subnet.lastHostAddress}}</td>
+      <td>{{ subnet.firstHostAddress }} - {{ subnet.lastHostAddress}}</td>
     </tr>
   </tbody>
 </table>

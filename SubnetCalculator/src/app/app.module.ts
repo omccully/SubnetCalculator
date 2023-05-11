@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module'
 
@@ -30,7 +31,8 @@ import { SubnetMaskComponent } from './subnet-mask/subnet-mask.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
