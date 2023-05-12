@@ -1,21 +1,24 @@
-<p>Subnet mask: {{subnetMask}}</p>
-<p>Binary: {{binary}}</p>
-<p>Class: {{class}}</p>
-<p>Hosts per subnet: {{hostsPerSubnet}}</p>
-<p>Number of subnets: {{numberOfSubnets}}</p>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>Subnet binary</td>
-      <td>Subnet address</td>
-      <td>Valid host range</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let subnet of subnets">
-      <td>{{ subnet.networkBits }}</td>
-      <td>{{ subnet }}</td>
-      <td>{{ subnet.firstHostAddress }} - {{ subnet.lastHostAddress}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="subnet_mask_container">
+  <h1>Subnet mask {{subnetMask}}</h1>
+  <p>Binary <mat-icon class="help_tooltip">question_mark</mat-icon>: {{binary}}</p>
+  <p>Class: {{class}}</p>
+  <p>Hosts per subnet: {{hostsPerSubnet}}</p>
+  <p>Number of subnets: {{numberOfSubnets}}</p>
+  <h2>Possible subnets</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Subnet binary</td>
+        <td>Subnet address</td>
+        <td>Valid host range</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subnet of subnets">
+        <td>{{ subnet.networkBits }}</td>
+        <td>{{ subnet }}</td>
+        <td>{{ subnet.firstHostAddress }} - {{ subnet.lastHostAddress}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

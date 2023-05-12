@@ -1,15 +1,14 @@
 <header>
   <mat-toolbar color="primary">
-    <button mat-icon-button [routerLink]="['/subnet-mask-calculator']">
-      <mat-icon>
-        home
-      </mat-icon>
-    </button>
     <a mat-flat-button color="primary" [routerLink]="['/subnet-mask-calculator']">
+      <mat-icon>calculate</mat-icon>
       Subnet Mask Calculator
     </a>
-    <a mat-flat-button color="primary" [routerLink]="['/private-ip-address-calculator']">
-      Private IP Calculator
-    </a>
+    <div>
+      <a mat-flat-button color="primary" [routerLink]="['/private-ip-address-calculator']">
+        <mat-icon>calculate</mat-icon>
+        Private IP Calculator
+      </a>
+    </div>
   </mat-toolbar>
 </header>

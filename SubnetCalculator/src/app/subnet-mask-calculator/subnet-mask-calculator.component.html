@@ -1,22 +1,13 @@
 <mat-drawer-container>
-  <mat-drawer mode="side" (keydown.arrowup)="onMoveUp()" (keydown.arrowdown)="onMoveDown()" opened>
-
+  <mat-drawer mode="side" (keydown.arrowup)="onMoveUp($event)" (keydown.arrowdown)="onMoveDown($event)" opened>
     <mat-nav-list>
       <a mat-list-item *ngFor="let subnetMask of subnetMasks"
+          id="sm_{{subnetMask}}"
             (click)="onSelectSubnet(subnetMask)"
                   [ngClass]="{'selectedButton': (selectedSubnetMask == subnetMask)}">
         <span>{{subnetMask}}</span>
       </a>
      </mat-nav-list>
-
-      <!--<ul>
-        <li *ngFor="let subnetMask of subnetMasks">
-          <button mat-button accesskey="" (click)="onSelectSubnet(subnetMask)"
-                  [ngClass]="{'selectedButton': (selectedSubnetMask == subnetMask)}">
-            {{subnetMask}}
-          </button>
-        </li>
-      </ul>-->
   </mat-drawer>
   <mat-drawer-content>
     <app-subnet-mask [subnetMask]="selectedSubnetMask">

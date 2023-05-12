@@ -29,12 +29,18 @@ export class SubnetMaskCalculatorComponent implements OnInit {
     this.selectedSubnetMask = selectedSubnetMask;
   }
 
-  public onMoveUp() {
+  public onMoveUp(event: any) {
     this.tryMove(-1);
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(event.constructor.name);
   }
 
-  public onMoveDown() {
+  public onMoveDown(event: any) {
     this.tryMove(1);
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(event.constructor.name);
   }
 
   private tryMove(indexChange: number) {
@@ -48,6 +54,7 @@ export class SubnetMaskCalculatorComponent implements OnInit {
     if (!this.subnetMasks) return;
     if (0 <= index && index < this.subnetMasks.length) {
       this.selectedSubnetMask = this.subnetMasks[index];
+      document.getElementById("sm_" + this.selectedSubnetMask)?.scrollIntoView();
     }
   }
 }
