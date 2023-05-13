@@ -6,12 +6,12 @@ export class SubnetMask extends Address32 {
 
   constructor(dottedDecimal: string) {
     super(dottedDecimal);
-
-
   }
 
   public get subnetPrefixLength(): number {
-    return this.binary.indexOf('0');
+    const newLocal = this.binary.indexOf('0');
+    if (newLocal == -1) return 32;
+    return newLocal;
   }
 
   public get networkPrefixLength(): number {
@@ -87,6 +87,14 @@ export class SubnetMask extends Address32 {
       default:
         throw new Error("Invalid");
     }
+  }
+
+  public static fromOneCount(oneCount: number): SubnetMask {
+    if (oneCount < 0) throw new Error("oneCount must be greater or equal to 0");
+    if (oneCount > 32) throw new Error("oneCount must be less than 32");
+    var binary: string = '1'.repeat(oneCount) + '0'.repeat(32 - oneCount);
+    var dottedDecimal: string = Address32.binaryToDottedDecimal(binary);
+    return new SubnetMask(dottedDecimal);
   }
 }
 

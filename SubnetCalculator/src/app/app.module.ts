@@ -6,6 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module'
 
@@ -15,6 +19,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { PrivateIpAddressCalculatorComponent } from './private-ip-address-calculator/private-ip-address-calculator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubnetMaskComponent } from './subnet-mask/subnet-mask.component';
+import { HelpToolTipComponent } from './help-tool-tip/help-tool-tip.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +27,22 @@ import { SubnetMaskComponent } from './subnet-mask/subnet-mask.component';
     SubnetMaskCalculatorComponent,
     NavMenuComponent,
     PrivateIpAddressCalculatorComponent,
-    SubnetMaskComponent
+    SubnetMaskComponent,
+    HelpToolTipComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

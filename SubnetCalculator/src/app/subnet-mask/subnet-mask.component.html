@@ -1,10 +1,14 @@
-<div class="subnet_mask_container">
-  <h1>Subnet mask {{subnetMask}}</h1>
-  <p>Binary <mat-icon class="help_tooltip">question_mark</mat-icon>: {{binary}}</p>
-  <p>Class: {{class}}</p>
-  <p>Hosts per subnet: {{hostsPerSubnet}}</p>
-  <p>Number of subnets: {{numberOfSubnets}}</p>
+<ng-template #MsgRef>
+  <p>test temp</p>
+</ng-template>
+<mat-card>
+  <p>Class<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{class}}</p>
+  <p>Hosts per subnet<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{hostsPerSubnet}}</p>
+  <p>Number of subnets<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{numberOfSubnets}}</p>
+</mat-card>
+ <mat-card>
   <h2>Possible subnets</h2>
+  <ng-template [ngTemplateOutlet]="MsgRef"></ng-template>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -21,4 +25,5 @@
       </tr>
     </tbody>
   </table>
-</div>
+</mat-card>
+

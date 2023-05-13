@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Address32 } from 'src/app/lib/address32';
+import { SubnetMask } from 'src/app/lib/subnet-mask';
 
 @Component({
   selector: 'app-subnet-mask-calculator',
@@ -10,7 +11,9 @@ export class SubnetMaskCalculatorComponent implements OnInit {
 
   public subnetMasks?: string[];
 
-  public selectedSubnetMask = "255.255.0.0";
+  public selectedSubnetMask!: string;
+  public selectedSubnetMaskBinary!: string;
+  public selectedSubnetMaskOneBitCount: number | null = null;
 
   constructor() {
     this.subnetMasks = Array<string>();
@@ -20,13 +23,44 @@ export class SubnetMaskCalculatorComponent implements OnInit {
       var dottedDecimal = Address32.binaryToDottedDecimal(binaryString);
       this.subnetMasks.push(dottedDecimal);
     }
+
+    this.setSelectedSubnetMask("255.255.0.0");
   }
 
   ngOnInit(): void {
   }
 
-  public onSelectSubnet(selectedSubnetMask: string) {
+  public onSliderChange(event: any) {
+    console.log(event.value);
+
+    var newOneBitCoun: number = parseInt(event.value);
+
+    if (this.selectedSubnetMaskOneBitCount == newOneBitCoun) return;
+
+    this.selectedSubnetMaskOneBitCount = newOneBitCoun;
+    if (newOneBitCoun) {
+      var subnetMaskObj = SubnetMask.fromOneCount(newOneBitCoun);
+      this.setSelectedSubnetMask(subnetMaskObj.dottedBytes);
+    }
+
+  }
+
+  private setSelectedSubnetMask(selectedSubnetMask: string) {
+    console.log(this.selectedSubnetMaskOneBitCount);
     this.selectedSubnetMask = selectedSubnetMask;
+    var subnetMaskObj = new SubnetMask(selectedSubnetMask);
+    this.selectedSubnetMaskBinary = subnetMaskObj.dottedBinary;
+    this.selectedSubnetMaskOneBitCount = subnetMaskObj.subnetPrefixLength;
+    console.log(this.selectedSubnetMaskOneBitCount);
+    
+  }
+
+  public onSelectSubnet(selectedSubnetMask: string) {
+    this.setSelectedSubnetMask(selectedSubnetMask);
+  }
+
+  public onBitSliderChange() {
+
   }
 
   public onMoveUp(event: any) {
@@ -53,10 +87,8 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   private tryMoveToIndex(index: number) {
     if (!this.subnetMasks) return;
     if (0 <= index && index < this.subnetMasks.length) {
-      this.selectedSubnetMask = this.subnetMasks[index];
+      this.setSelectedSubnetMask(this.subnetMasks[index]);
       document.getElementById("sm_" + this.selectedSubnetMask)?.scrollIntoView();
     }
   }
 }
-
-

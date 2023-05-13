@@ -10,8 +10,19 @@
      </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <app-subnet-mask [subnetMask]="selectedSubnetMask">
+    <div class="subnet_mask_container">
+      <h1>Subnet mask {{selectedSubnetMask}}</h1>
+      <p>
+        Binary <app-help-tool-tip helpMessage="The binary representation of the subnet mask. The binary representation is very relevant because one signature trait of subnet masks are that they always contain a series of 1 bits followed by a series of 0 bits.">
+        </app-help-tool-tip>: {{selectedSubnetMaskBinary}}
+      </p>
+      <mat-slider min="8" max="30" step="1" [(ngModel)]="selectedSubnetMaskOneBitCount" (input)="onSliderChange($event)"> 
+        <!--<input matSliderThumb >-->
+      </mat-slider>
 
-    </app-subnet-mask>
+      <app-subnet-mask [subnetMask]="selectedSubnetMask">
+
+      </app-subnet-mask>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
