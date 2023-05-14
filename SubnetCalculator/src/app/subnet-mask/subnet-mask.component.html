@@ -1,16 +1,16 @@
 <mat-card>
   <p>{{class}} <app-help-tool-tip helpMessage="test"></app-help-tool-tip></p>
-  <p>Hosts per subnet <app-help-tool-tip helpMessage="The number of devices that can connect to the network. The more 0 bits that are in the subnet mask, the more address space there is for devices to connect to the network. "></app-help-tool-tip>: {{hostsPerSubnet}}</p>
-  <p>Number of subnets <app-help-tool-tip helpMessage="The number of sub-networks that are listed below"></app-help-tool-tip>: {{numberOfSubnets}}</p>
+  <p>Hosts per subnet <app-help-tool-tip helpMessage="The number of devices that can connect to the network. The more 0 bits that are in the subnet mask, the more address space there is for devices to connect to the network. "></app-help-tool-tip> : {{hostsPerSubnet}}</p>
+  <p>Number of subnets <app-help-tool-tip helpMessage="The number of sub-networks that this subnet mask allows for (listed below)."></app-help-tool-tip> : {{numberOfSubnets}}</p>
 </mat-card>
  <mat-card>
   <h2>Possible subnets</h2>
   <table class="table table-striped">
     <thead>
       <tr>
-        <td>Subnet binary</td>
-        <td>Subnet address</td>
-        <td>Valid host range</td>
+        <td>Subnet binary <app-help-tool-tip helpMessage="The binary digits that identify the unique sub-networks."></app-help-tool-tip></td>
+        <td>Subnet address <app-help-tool-tip helpMessage="The address that identifies the sub-network itself. This address cannot be assigned to a host or a router; it is used for identifying the network in routing tables and other such purposes."></app-help-tool-tip></td>
+        <td>Valid host range <app-help-tool-tip helpMessage="The addresses within this sub-network that can be assigned to a host or router. 2 address within the sub-network address range are not valid for hosts: the first address represents the network (ex: 192.168.1.0), and the last address represents the broadcast address for the network (ex: 192.168.1.255)."></app-help-tool-tip></td>
       </tr>
     </thead>
     <tbody>
