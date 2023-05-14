@@ -6,7 +6,7 @@ table.table {
     border-color: #dee2e6;
 
     &.table-striped > tbody > tr:nth-of-type(even) {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.10);
         /*color: #212529;*/
     }
 
