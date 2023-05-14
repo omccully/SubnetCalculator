@@ -5,7 +5,8 @@ import { PrivateIpAddressCalculatorComponent } from './private-ip-address-calcul
 
 const routes: Routes = [
   { path: 'subnet-mask-calculator', component: SubnetMaskCalculatorComponent },
-  { path: 'private-ip-address-calculator', component: PrivateIpAddressCalculatorComponent }
+  { path: 'private-ip-address-calculator', component: PrivateIpAddressCalculatorComponent },
+  { path: '', redirectTo: 'subnet-mask-calculator', pathMatch: 'full' }
 ];
 
 @NgModule({
