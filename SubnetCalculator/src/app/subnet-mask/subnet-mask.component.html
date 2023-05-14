@@ -1,14 +1,10 @@
-<ng-template #MsgRef>
-  <p>test temp</p>
-</ng-template>
 <mat-card>
-  <p>Class<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{class}}</p>
-  <p>Hosts per subnet<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{hostsPerSubnet}}</p>
-  <p>Number of subnets<app-help-tool-tip helpMessage="test"></app-help-tool-tip>: {{numberOfSubnets}}</p>
+  <p>{{class}} <app-help-tool-tip helpMessage="test"></app-help-tool-tip></p>
+  <p>Hosts per subnet <app-help-tool-tip helpMessage="The number of devices that can connect to the network. The more 0 bits that are in the subnet mask, the more address space there is for devices to connect to the network. "></app-help-tool-tip>: {{hostsPerSubnet}}</p>
+  <p>Number of subnets <app-help-tool-tip helpMessage="The number of sub-networks that are listed below"></app-help-tool-tip>: {{numberOfSubnets}}</p>
 </mat-card>
  <mat-card>
   <h2>Possible subnets</h2>
-  <ng-template [ngTemplateOutlet]="MsgRef"></ng-template>
   <table class="table table-striped">
     <thead>
       <tr>

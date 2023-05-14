@@ -22,16 +22,30 @@ export class SubnetMask extends Address32 {
     return 0;
   }
 
+  private customClassText(classChar: string): string {
+    return `Class ${classChar} subnet — custom subnet mask`;
+  }
+
+  private defaultClassText(classChar: string): string {
+    return `Class ${classChar} network — default subnet mask`;
+  }
+
   public get class(): string {
-    switch (this.subnetPrefixLength) {
-      case 8:
-        return "A";
-      case 16:
-        return "B";
-      case 24:
-        return "C";
+    if (this.subnetPrefixLength > 24) {
+      return this.customClassText("C");
+    } else if (this.subnetPrefixLength == 24) {
+      return this.defaultClassText("C");
+    } else if (this.subnetPrefixLength > 16) {
+      return this.customClassText("B");
+    } else if (this.subnetPrefixLength == 16) {
+      return this.defaultClassText("B");
+    } else if (this.subnetPrefixLength > 8) {
+      return this.customClassText("A");
+    } else if (this.subnetPrefixLength == 8) {
+      return this.defaultClassText("A");
+    } else {
+      return "N/A";
     }
-    return "N/A";
   }
 
   public get hostsPerSubnets(): number {
