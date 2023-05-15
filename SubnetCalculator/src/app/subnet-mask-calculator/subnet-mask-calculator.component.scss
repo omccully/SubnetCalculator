@@ -2,12 +2,6 @@ mat-drawer-container {
     height: 100vh;
 }
 
-@media (max-width: 767px) {
-  mat-drawer {
-    display: none;
-  }
-}
-
 .selectedButton {
   
   opacity: 0.2;
@@ -20,4 +14,17 @@ mat-drawer-container {
 mat-slider {
     margin-left: 50px;
     width: 300px;
+}
+
+@media (max-width: 767px) {
+  mat-drawer {
+    display: none;
+  }
+
+  mat-slider {
+      margin-left: 3%;
+      margin-right: 3%;
+      width: 94%;
+
+  }
 }
