@@ -2,6 +2,12 @@ mat-drawer-container {
     height: 100vh;
 }
 
+@media (max-width: 767px) {
+  mat-drawer {
+    display: none;
+  }
+}
+
 .selectedButton {
   
   opacity: 0.2;
