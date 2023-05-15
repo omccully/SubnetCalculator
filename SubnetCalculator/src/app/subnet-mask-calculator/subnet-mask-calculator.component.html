@@ -16,8 +16,8 @@
         Binary <app-help-tool-tip helpMessage="The binary representation of the subnet mask. The binary representation is very relevant because one signature trait of subnet masks are that they always contain a series of 1 bits followed by a series of 0 bits. The 1 bits of the subnet mask signify the part of the IP address that represents the network that the IP address is a part of. The 0 bits signify the portion that is unique for each device that is on the network.">
         </app-help-tool-tip> : {{selectedSubnetMaskBinary}}
       </p>
-      <mat-slider min="8" max="30" step="1" [(ngModel)]="selectedSubnetMaskOneBitCount" (input)="onSliderChange($event)"> 
-        <!--<input matSliderThumb >-->
+      <mat-slider min="8" max="30" step="1" (input)="onSliderChange($event)"> 
+        <input matSliderThumb [(ngModel)]="selectedSubnetMaskOneBitCount">
       </mat-slider>
 
       <app-subnet-mask [subnetMask]="selectedSubnetMask">

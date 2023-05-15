@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
-import { MatLegacySliderModule as MatSliderModule } from '@angular/material/legacy-slider';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module'

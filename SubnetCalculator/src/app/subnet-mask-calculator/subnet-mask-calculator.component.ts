@@ -31,18 +31,10 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   }
 
   public onSliderChange(event: any) {
-    console.log(event.value);
-
-    var newOneBitCoun: number = parseInt(event.value);
-
-    if (this.selectedSubnetMaskOneBitCount == newOneBitCoun) return;
-
-    this.selectedSubnetMaskOneBitCount = newOneBitCoun;
-    if (newOneBitCoun) {
-      var subnetMaskObj = SubnetMask.fromOneCount(newOneBitCoun);
+    if (this.selectedSubnetMaskOneBitCount) {
+      var subnetMaskObj = SubnetMask.fromOneCount(this.selectedSubnetMaskOneBitCount);
       this.setSelectedSubnetMask(subnetMaskObj.dottedBytes);
     }
-
   }
 
   private setSelectedSubnetMask(selectedSubnetMask: string) {
