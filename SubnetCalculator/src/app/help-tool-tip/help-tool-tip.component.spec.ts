@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularMaterialModule } from '../angular-material.module';
 import { HelpToolTipComponent } from './help-tool-tip.component';
 
 describe('HelpToolTipComponent', () => {
@@ -8,7 +8,10 @@ describe('HelpToolTipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HelpToolTipComponent ]
+      declarations: [HelpToolTipComponent],
+      imports: [
+        AngularMaterialModule
+      ]
     })
     .compileComponents();
   });
