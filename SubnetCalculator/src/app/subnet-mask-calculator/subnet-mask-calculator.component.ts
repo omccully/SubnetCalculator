@@ -33,7 +33,7 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   public onSliderChange(event: any) {
     if (this.selectedSubnetMaskOneBitCount) {
       var subnetMaskObj = SubnetMask.fromOneCount(this.selectedSubnetMaskOneBitCount);
-      this.setSelectedSubnetMask(subnetMaskObj.dottedBytes);
+      this.setSelectedSubnetMask(subnetMaskObj.dottedDecimal);
     }
   }
 
@@ -41,7 +41,7 @@ export class SubnetMaskCalculatorComponent implements OnInit {
     this.selectedSubnetMask = selectedSubnetMask;
     var subnetMaskObj = new SubnetMask(selectedSubnetMask);
     this.selectedSubnetMaskBinary = subnetMaskObj.dottedBinary;
-    this.selectedSubnetMaskOneBitCount = subnetMaskObj.subnetPrefixLength;
+    this.selectedSubnetMaskOneBitCount = subnetMaskObj.networkBitCount;
   }
 
   public onSelectSubnet(selectedSubnetMask: string) {

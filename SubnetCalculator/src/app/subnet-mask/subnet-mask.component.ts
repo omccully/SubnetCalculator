@@ -28,7 +28,7 @@ export class SubnetMaskComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,7 +39,7 @@ export class SubnetMaskComponent implements OnInit, OnChanges {
     this.hostsPerSubnet = subnetMask.hostsPerSubnets;
     this.numberOfSubnets = subnetMask.subnetworksCount;
     this.subnets = subnetMask.subnets;
-    this.oneBitCount = subnetMask.subnetPrefixLength;
-    this.wildcardMask = subnetMask.inverted.dottedBytes;
+    this.oneBitCount = subnetMask.networkBitCount;
+    this.wildcardMask = subnetMask.inverted.dottedDecimal;
   }
 }

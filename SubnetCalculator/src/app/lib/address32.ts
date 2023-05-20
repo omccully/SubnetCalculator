@@ -1,6 +1,9 @@
 
+/**
+ * Represents a 32 bit IPv4 network address.
+ */
 export class Address32 {
-  public readonly bytes: number[];
+  public readonly bytes: ReadonlyArray<number>;
 
   constructor(dottedDecimal: string) {
     var regex = new RegExp('^([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)$');
@@ -17,7 +20,7 @@ export class Address32 {
     }
   }
 
-  public get dottedBytes(): string {
+  public get dottedDecimal(): string {
     return this.bytes.join('.');
   }
 
@@ -25,7 +28,7 @@ export class Address32 {
     return this.bytes.map(b => this.byteToBinary(b)).join(".");
   }
 
-  public get binary() {
+  public get binary(): string {
     return this.bytes.map(b => this.byteToBinary(b)).join("");
   }
 
@@ -35,7 +38,7 @@ export class Address32 {
 
   private byteToBinary(byte: number): string {
     return byte.toString(2).padStart(8, "0");
-  } 
+  }
 
   private static parseBinaryBytes(binary: string): number[] {
     var result: number[] = [];
