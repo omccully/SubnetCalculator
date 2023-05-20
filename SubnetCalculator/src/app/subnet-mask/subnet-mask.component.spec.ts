@@ -40,7 +40,7 @@ describe('SubnetMaskComponent', () => {
       ]
     })
     .compileComponents();
-  }); 
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SubnetMaskComponent);
@@ -78,28 +78,48 @@ describe('SubnetMaskComponent', () => {
 
   it('should display table of possible subnets', () => {
     const subnetMask = "255.192.0.0";
-    initializeSubnetMaskInput(subnetMask);
-
-    const compiled = fixture.nativeElement as HTMLElement;
-    const table = compiled.querySelector('.sn-possible-subnets-table');
-    const tbody = table!.querySelector('tbody');
     const expectedData = [
-      ["00", "n.0.0.0", "n.0.0.1 - n.63.255.254"],
-      ["01", "n.64.0.0", "n.64.0.1 - n.127.255.254"],
-      ["10", "n.128.0.0", "n.128.0.1 - n.191.255.254"],
-      ["11", "n.192.0.0", "n.192.0.1 - n.255.255.254"]
+      ['00', 'n.0.0.0', 'n.0.0.1 - n.63.255.254'],
+      ['01', 'n.64.0.0', 'n.64.0.1 - n.127.255.254'],
+      ['10', 'n.128.0.0', 'n.128.0.1 - n.191.255.254'],
+      ['11', 'n.192.0.0', 'n.192.0.1 - n.255.255.254'],
     ];
 
-    let actualData = new Array();
-    tbody!.querySelectorAll('tr').forEach((row: HTMLTableRowElement) => {
-      const binary = row.children[0].textContent;
-      const network = row.children[1].textContent;
-      const range = row.children[2].textContent;
-      
-      actualData.push([binary, network, range]);
-    });
-    
+    initializeSubnetMaskInput(subnetMask);
+
+    let actualData = getPossibleSubnetsTableData(fixture);
+
+    expect(actualData.length).toEqual(expectedData.length);
+    expect(actualData).toEqual(expectedData);
+  });
+
+  it('should display table of possible subnets for edge case', () => {
+    const subnetMask = '255.0.0.0';
+    const expectedData = [
+      ['', 'n.0.0.0', 'n.0.0.1 - n.255.255.254']
+    ];
+
+    initializeSubnetMaskInput(subnetMask);
+
+    let actualData = getPossibleSubnetsTableData(fixture);
+
     expect(actualData.length).toEqual(expectedData.length);
     expect(actualData).toEqual(expectedData);
   });
 });
+
+function getPossibleSubnetsTableData(fixture: ComponentFixture<SubnetMaskComponent>) {
+  const compiled = fixture.nativeElement as HTMLElement;
+  const table = compiled.querySelector('.sn-possible-subnets-table');
+  const tbody = table!.querySelector('tbody');
+
+  let actualData = new Array();
+  tbody!.querySelectorAll('tr').forEach((row: HTMLTableRowElement) => {
+    const binary = row.children[0].textContent;
+    const network = row.children[1].textContent;
+    const range = row.children[2].textContent;
+
+    actualData.push([binary, network, range]);
+  });
+  return actualData;
+}
