@@ -3,6 +3,7 @@ import { Component, SimpleChanges, SimpleChange } from '@angular/core';
 import { SubnetMaskComponent } from './subnet-mask.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { HelpToolTipComponent } from '../help-tool-tip/help-tool-tip.component';
+import { TestHelpers } from 'src/app/lib/test-helpers';
 
 describe('SubnetMaskComponent', () => {
   let component: SubnetMaskComponent;
@@ -16,10 +17,6 @@ describe('SubnetMaskComponent', () => {
     fixture.detectChanges();
   }
 
-  function escapeRegex(regex: string) {
-    return regex.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
-  }
-
   function expectElementTextMatch(elementSelector: string, regex: string) {
     const compiled = fixture.nativeElement as HTMLElement;
     const element = compiled.querySelector(elementSelector);
@@ -28,7 +25,7 @@ describe('SubnetMaskComponent', () => {
   }
 
   function expectInfoElement(elementSelector: string, expectedLabel: string, expectedValue: string) {
-    const regex = escapeRegex(expectedLabel) + '.+: ' + escapeRegex(expectedValue);
+    const regex = TestHelpers.escapeRegex(expectedLabel) + '.+: ' + TestHelpers.escapeRegex(expectedValue);
     expectElementTextMatch(elementSelector, regex);
   }
 
