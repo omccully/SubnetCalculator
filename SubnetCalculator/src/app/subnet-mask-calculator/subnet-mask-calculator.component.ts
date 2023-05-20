@@ -38,13 +38,10 @@ export class SubnetMaskCalculatorComponent implements OnInit {
   }
 
   private setSelectedSubnetMask(selectedSubnetMask: string) {
-    console.log(this.selectedSubnetMaskOneBitCount);
     this.selectedSubnetMask = selectedSubnetMask;
     var subnetMaskObj = new SubnetMask(selectedSubnetMask);
     this.selectedSubnetMaskBinary = subnetMaskObj.dottedBinary;
     this.selectedSubnetMaskOneBitCount = subnetMaskObj.subnetPrefixLength;
-    console.log(this.selectedSubnetMaskOneBitCount);
-    
   }
 
   public onSelectSubnet(selectedSubnetMask: string) {

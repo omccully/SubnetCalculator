@@ -8,9 +8,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
@@ -21,6 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSliderModule
   ],
   exports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
