@@ -1,5 +1,5 @@
 
-export abstract class Address32 {
+export class Address32 {
   public readonly bytes: number[];
 
   constructor(dottedDecimal: string) {
@@ -27,6 +27,10 @@ export abstract class Address32 {
 
   public get binary() {
     return this.bytes.map(b => this.byteToBinary(b)).join("");
+  }
+
+  public get inverted(): Address32 {
+    return new Address32(this.bytes.map(b => 255 - b).join("."));
   }
 
   private byteToBinary(byte: number): string {

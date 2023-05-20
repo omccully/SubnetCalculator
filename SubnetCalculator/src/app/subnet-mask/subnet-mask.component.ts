@@ -21,6 +21,8 @@ export class SubnetMaskComponent implements OnInit, OnChanges {
 
   public oneBitCount?: number;
 
+  public wildcardMask?: string;
+
   public subnets?: Subnet[]
 
   constructor() { }
@@ -38,5 +40,6 @@ export class SubnetMaskComponent implements OnInit, OnChanges {
     this.numberOfSubnets = subnetMask.subnetworksCount;
     this.subnets = subnetMask.subnets;
     this.oneBitCount = subnetMask.subnetPrefixLength;
+    this.wildcardMask = subnetMask.inverted.dottedBytes;
   }
 }

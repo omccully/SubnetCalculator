@@ -67,7 +67,13 @@ describe('SubnetMaskComponent', () => {
   it('should display number of subnets', () => {
     const subnetMask = "255.192.0.0";
     initializeSubnetMaskInput(subnetMask);
-    expectInfoElement(".sn-info-number-of-subnets", 'Number of subnets', '4');
+    expectInfoElement(".sn-info-number-f-subnets", 'Number of subnets', '4');
+  });
+
+  it('should display wildcard mask', () => {
+    const subnetMask = "255.192.0.0";
+    initializeSubnetMaskInput(subnetMask);
+    expectInfoElement(".sn-info-wildcard-mask", 'Wildcard mask', '0.63.255.255');
   });
 
   it('should display table of possible subnets', () => {
