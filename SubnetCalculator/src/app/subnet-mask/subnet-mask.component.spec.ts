@@ -76,36 +76,39 @@ describe('SubnetMaskComponent', () => {
     expectInfoElement(".sn-info-wildcard-mask", 'Wildcard mask', '0.63.255.255');
   });
 
-  it('should display table of possible subnets', () => {
-    const subnetMask = "255.192.0.0";
-    const expectedData = [
-      ['00', 'n.0.0.0', 'n.0.0.1 - n.63.255.254'],
-      ['01', 'n.64.0.0', 'n.64.0.1 - n.127.255.254'],
-      ['10', 'n.128.0.0', 'n.128.0.1 - n.191.255.254'],
-      ['11', 'n.192.0.0', 'n.192.0.1 - n.255.255.254'],
-    ];
+  const possibleSubnetsTestData = [
+    [
+      '255.192.0.0',
+      [
+        ['00', 'n.0.0.0', 'n.0.0.1 - n.63.255.254'],
+        ['01', 'n.64.0.0', 'n.64.0.1 - n.127.255.254'],
+        ['10', 'n.128.0.0', 'n.128.0.1 - n.191.255.254'],
+        ['11', 'n.192.0.0', 'n.192.0.1 - n.255.255.254'],
+      ],
+    ],
+    ['255.0.0.0', [['', 'n.0.0.0', 'n.0.0.1 - n.255.255.254']]],
+    [
+      '255.255.255.128',
+      [
+        ['0', 'n.n.n.0', 'n.n.n.1 - n.n.n.126'],
+        ['1', 'n.n.n.128', 'n.n.n.129 - n.n.n.254'],
+      ],
+    ],
+  ];
 
-    initializeSubnetMaskInput(subnetMask);
+  possibleSubnetsTestData.forEach(testData => {
+    const subnetMask = testData[0] as string;
+    it(`should display table of possible subnets for ${subnetMask}`, () => {
+      const expectedData = testData[1];
 
-    let actualData = getPossibleSubnetsTableData(fixture);
+      initializeSubnetMaskInput(subnetMask);
 
-    expect(actualData.length).toEqual(expectedData.length);
-    expect(actualData).toEqual(expectedData);
-  });
+      let actualData = getPossibleSubnetsTableData(fixture);
 
-  it('should display table of possible subnets for edge case', () => {
-    const subnetMask = '255.0.0.0';
-    const expectedData = [
-      ['', 'n.0.0.0', 'n.0.0.1 - n.255.255.254']
-    ];
-
-    initializeSubnetMaskInput(subnetMask);
-
-    let actualData = getPossibleSubnetsTableData(fixture);
-
-    expect(actualData.length).toEqual(expectedData.length);
-    expect(actualData).toEqual(expectedData);
-  });
+      expect(actualData.length).toEqual(expectedData.length);
+      expect(actualData).toEqual(expectedData);
+    });
+  })
 });
 
 function getPossibleSubnetsTableData(fixture: ComponentFixture<SubnetMaskComponent>) {
